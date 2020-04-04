@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
+
+            <EditText android:id="@+id/edt_ip_and_port"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+
+                android:hint="IP:端口"
+                android:textSize="15sp"/>
+
+            <Button android:id="@+id/btn_connect"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:text="连接"/>
+
+            <Button android:id="@+id/btn_disconnect"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:visibility="gone"
+                android:text="关闭"/>
+
+        </LinearLayout>
+
+        <EditText android:id="@+id/edt_command"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:hint="请输入指令" />
+
+        <Button android:id="@+id/btn_send_command"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="发送指令"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <TextView android:id="@+id/tv_showMsg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"/>
+        </ScrollView>
+
+        <Button android:id="@+id/btn_clear_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清除日志"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <Button android:id="@+id/btn_heatup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="升温"/>
+
+        <Button android:id="@+id/btn_cooling"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="降温"/>
+
+        <Button android:id="@+id/btn_wind_direnction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="风向"/>
+
+        <Button android:id="@+id/btn_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="模式"/>
+    </LinearLayout>
+
+</LinearLayout>
