@@ -14,9 +14,11 @@ import android.widget.EditText;
 import com.arzirtime.iremoter.MainActivity;
 import com.arzirtime.iremoter.R;
 import com.arzirtime.iremoter.common.AppConstanct;
+import com.arzirtime.iremoter.common.LogTag;
 import com.arzirtime.support.socket.ConnectClient;
 import com.arzirtime.support.socket.ConnectManager;
 import com.arzirtime.support.socket.ConnectMessageType;
+import com.arzirtime.support.util.LogUtil;
 import com.arzirtime.support.util.StringUtils;
 import com.arzirtime.support.util.ToastUtils;
 
@@ -35,7 +37,7 @@ public class LoginActivity extends AppCompatActivity  {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Log.d("k:", "LoginActivity->mHandler>" + "msg.what:" + msg.what + "msg.obj:" + (String) msg.obj);
+            LogUtil.v(LogTag.LOGTAG, String.format("%s->mHandler> msg.what:%d | msg.obj:%s",this.getClass().getName(),msg.what, (String) msg.obj));
 
             switch (msg.what) {
 

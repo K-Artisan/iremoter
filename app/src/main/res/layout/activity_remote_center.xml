@@ -1,91 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!--主视图-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8">
+        android:layout_height="match_parent">
 
-        <LinearLayout android:orientation="horizontal"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top">
+            android:layout_height="wrap_content">
+            <!--状态栏
+             1.ActionBar 使用单独的主题   android:theme，app:popupTheme
+             2.layout_scrollFlags：
+                scroll表示当RecyclerView向上滚动的时候，Toolbar会跟着一起向上滚动并实现隐藏；
+                enterAlways表示当RecyclerView向下滚动的时候，Toolbar会跟着一起向下滚动并重新显示。
+                snap表示当Toolbar还没有完全隐藏或显示的时候，会根据当前滚动的距离，自动选择是隐藏还是显示。
+             -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
 
-            <EditText android:id="@+id/edt_ip_and_port"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-
-                android:hint="IP:端口"
-                android:textSize="15sp"/>
-
-            <Button android:id="@+id/btn_connect"
-                android:layout_width="80dp"
-                android:layout_height="45dp"
-                android:text="连接"/>
-
-            <Button android:id="@+id/btn_disconnect"
-                android:layout_width="80dp"
-                android:layout_height="45dp"
-                android:visibility="gone"
-                android:text="关闭"/>
-
-        </LinearLayout>
-
-        <EditText android:id="@+id/edt_command"
+        <!--appbar_scrolling_view_behavior：不会盖住 Toolbar-->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/devSwipRefrhLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:hint="请输入指令" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-        <Button android:id="@+id/btn_send_command"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="发送指令"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="180dp">
-
-            <TextView android:id="@+id/tv_showMsg"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="12sp"/>
-        </ScrollView>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <Button android:id="@+id/btn_clear_log"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="清除日志"/>
-    </LinearLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <LinearLayout android:orientation="vertical"
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--滑块视图(屏幕侧便划出)-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header" />
 
-        <Button android:id="@+id/btn_heatup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="升温"/>
+</androidx.drawerlayout.widget.DrawerLayout>
 
-        <Button android:id="@+id/btn_cooling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="降温"/>
 
-        <Button android:id="@+id/btn_wind_direnction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="风向"/>
-
-        <Button android:id="@+id/btn_model"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="模式"/>
-    </LinearLayout>
-
-</LinearLayout>
